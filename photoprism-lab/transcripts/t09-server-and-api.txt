@@ -1,0 +1,35 @@
+$ GET / (web UI entry)
+status 307, redirects to http://127.0.0.1:2342/library/login
+<title>PhotoPrism</title>
+
+$ POST /api/v1/session (login as the lab admin)
+login ok — session id received (value kept out of the transcript)
+
+$ GET /api/v1/photos (the whole library, titles and dates)
+Traceback (most recent call last):
+  File "<string>", line 3, in <module>
+TypeError: string indices must be integers, not 'str'
+
+$ search: label:church
+2 photo(s): ['Church / Reykjavíkurborg / 2024', 'Harbour Sunrise / 2024']
+$ search: country:is
+1 photo(s): ['Church / Reykjavíkurborg / 2024']
+$ search: year:2024
+3 photo(s): ['Church / Reykjavíkurborg / 2024', 'Harbour Sunrise / 2024', 'City Squares / 2024']
+
+$ GET /api/v1/subjects and /api/v1/faces (people features)
+[]
+[]
+
+$ GET /api/v1/photos?count=100 (retry, raw shape first)
+[{"ID":"9","UID":"ptnop1lu5f0q8fbq","Type":"image","TypeSrc":"","TakenAt":"2026-10-29T19:33:49Z","TakenAtLocal":"2026-10-29T19:33:49Z","TakenSrc":"","TimeZone":"Local","Path":"","Name":"drawn-portrait ...
+list 9
+- Drawn Portrait | 2026-10-29 | lat 0 lng 0
+- Church / Reykjavíkurborg / 2024 | 2024-06-14 | lat 64.1466 lng -21.9426
+- Seashore / South Africa / 2017 | 2017-02-15 | lat -29.28247777777778 lng 31.44363611111111
+- Still Life / 2023 | 2023-10-03 | lat 0 lng 0
+- Red Circle Study / 2025 | 2025-01-20 | lat 0 lng 0
+- Harbour Sunrise / 2024 | 2024-06-14 | lat 0 lng 0
+- Mountain Lake / 2023 | 2023-10-02 | lat 0 lng 0
+- Chart Lines | 2026-10-29 | lat 0 lng 0
+- City Squares / 2024 | 2024-06-14 | lat 0 lng 0

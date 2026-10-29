@@ -1,0 +1,86 @@
+$ photoprism config (first 40 lines of the full table)
+GLOBAL CONFIG OPTIONS
+
+┌───────────────────────────┬───────────────────────────────────────────────────────────────────────────────────────────────────────┐
+│           Name            │                                                 Value                                                 │
+├───────────────────────────┼───────────────────────────────────────────────────────────────────────────────────────────────────────┤
+│ auth-mode                 │ password                                                                                              │
+│ admin-user                │ admin                                                                                                 │
+│ admin-password            │ ***                                                                                                   │
+│ admin-scope               │                                                                                                       │
+│ password-length           │ 8                                                                                                     │
+│ password-reset-uri        │                                                                                                       │
+│ register-uri              │                                                                                                       │
+│ login-uri                 │ /library/login                                                                                        │
+│ login-info                │                                                                                                       │
+│ session-maxage            │ 1209600                                                                                               │
+│ session-timeout           │ 604800                                                                                                │
+│ session-cache             │ 900                                                                                                   │
+│ download-token            │                                                                                                       │
+│ download-token-maxage     │ 3600                                                                                                  │
+│ preview-token             │ 496492c53ed337cc                                                                                      │
+│ log-level                 │ info                                                                                                  │
+│ debug                     │ false                                                                                                 │
+│ trace                     │ false                                                                                                 │
+│ storage-path              │ /home/hatch/workspace/photoprism-lab-work/storage                                                     │
+│ storage-case              │ auto                                                                                                  │
+│ storage-free              │ -1                                                                                                    │
+│ config-path               │ /home/hatch/workspace/photoprism-lab-work/storage/config                                              │
+│ certificates-path         │ /home/hatch/workspace/photoprism-lab-work/storage/config/certificates                                 │
+│ options-yaml              │ /home/hatch/workspace/photoprism-lab-work/storage/config/options.yml                                  │
+│ defaults-yaml             │ /etc/photoprism/defaults.yml                                                                          │
+│ settings-yaml             │ /etc/photoprism/settings.yml (defaults)                                                               │
+│ settings-yaml             │ /home/hatch/workspace/photoprism-lab-work/storage/config/settings.yml                                 │
+│ originals-path            │ /home/hatch/workspace/photoprism-lab-work/originals                                                   │
+│ originals-case            │ auto                                                                                                  │
+│ originals-limit           │ 5000                                                                                                  │
+│ resolution-limit          │ 150                                                                                                   │
+│ users-path                │ users                                                                                                 │
+│ users-storage-path        │ /home/hatch/workspace/photoprism-lab-work/storage/users                                               │
+│ users-originals-path      │ /home/hatch/workspace/photoprism-lab-work/originals/users                                             │
+│ import-path               │ /home/hatch/workspace/photoprism-lab-work/import                                                      │
+
+$ storage/ after indexing
+storage
+storage/.ppignore
+storage/.ppstorage
+storage/backup
+storage/backup/albums
+storage/backup/serial
+storage/cache
+storage/cache/.ppignore
+storage/cache/cmd
+storage/cache/media
+storage/cache/thumbnails
+storage/config
+storage/config/.ppignore
+storage/config/certificates
+storage/config/hub.yml
+storage/config/keys
+storage/config/options.yml
+storage/config/settings.yml
+storage/index.db
+storage/serial
+storage/sidecar
+storage/sidecar/chart-lines.yml
+storage/sidecar/city-squares.yml
+storage/sidecar/harbour-sunrise.yml
+storage/sidecar/mountain-lake.yml
+1.3M	storage
+
+$ thumbnails on disk
+42
+420K	storage/cache/thumbnails
+storage/cache/thumbnails/7/f/c/7fc89dd9767b8267bfaccd392d9a80ab5fc3ce59_1280x1024_fit.jpg
+storage/cache/thumbnails/7/f/c/7fc89dd9767b8267bfaccd392d9a80ab5fc3ce59_500x500_center.jpg
+storage/cache/thumbnails/7/f/c/7fc89dd9767b8267bfaccd392d9a80ab5fc3ce59_720x720_fit.jpg
+storage/cache/thumbnails/7/f/c/7fc89dd9767b8267bfaccd392d9a80ab5fc3ce59_224x224_center.jpg
+
+$ originals after indexing: identical hashes, no new files?
+c8656ad569a7afecee662e71ab0dcba84c38755034aa3c0390dcf40b192fd296  chart-lines.png
+01ba836b78635a096efd8586d60554d3e49183534360a92995288a9c6d9b367e  city-squares.jpg
+06a0592253a5d8585b7966bc8eecc9aada309aa1dc40a86ceaea00305fa51180  harbour-sunrise.jpg
+a88f821f9a9a3df23010ee2336edbfbb714266477f327311948f6a83ceda7d95  mountain-lake.jpg
+906f1e451f8369c04d87a036fccfc794d19daf3c01f61e2ee4865c368138bb03  red-circle-study.jpg
+7bc715ff56e6ad7541b6ee0f43f2c1e32213d92bb22a082acf9dbb3aab5a9b46  still-life.jpg
+no sidecar or other new files in originals

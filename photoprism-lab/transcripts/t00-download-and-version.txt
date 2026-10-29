@@ -1,0 +1,336 @@
+$ tarball: amd64.tar.gz, 421508754 bytes
+sha256: 03dd5d319eeee7f1dfb51a1628ee598a33c9d94299a323b7083e9c65ed2d8f52
+
+$ photoprism --version
+./pkg/bin/photoprism: error while loading shared libraries: libvips.so.42: cannot open shared object file: No such file or directory
+
+$ ldd on the binary (missing libs, if any)
+	libvips.so.42 => not found
+
+$ bundled models in assets/models
+8.0K	pkg/assets/models/NOTICE
+49M	pkg/assets/models/efficientformerv2_s2
+92M	pkg/assets/models/facenet
+37M	pkg/assets/models/sface
+23M	pkg/assets/models/yahoo_open_nsfw
+232K	pkg/assets/models/yunet
+NOTICE
+efficientformerv2_s2
+facenet
+sface
+yahoo_open_nsfw
+yunet
+
+$ photoprism --help
+./pkg/bin/photoprism: error while loading shared libraries: libvips.so.42: cannot open shared object file: No such file or directory
+$ photoprism --version (LD_LIBRARY_PATH points at the lab-extracted libvips tree)
+photoprism version 261007-65faaae5d-Linux-AMD64-Plus
+
+$ the one system library the package does NOT bundle: libvips, plus its chain
+libvips42t64 + libcfitsio10t64 libcgif0 libexif12 libmatio11 libspng0 libhdf5-103-1t64 libsz2 libaec0
+(on a normal machine: sudo apt install libvips42t64 pulls this chain automatically)
+
+$ photoprism --help
+NAME:
+   photoprism - PhotoPrism®
+
+USAGE:
+   photoprism [global options] command [command options]
+
+VERSION:
+   261007-65faaae5d-Linux-AMD64-Plus
+
+DESCRIPTION:
+   PhotoPrism® is an AI-Powered Photos App for the Decentralized Web. It makes use of the latest technologies to tag and find pictures automatically without getting in your way. You can run it at home, on a private server, or in the cloud.
+
+COMMANDS:
+   start, up        Starts the Web server
+   stop, down       Stops the Web server in daemon mode
+   status           Checks if the Web server is running
+   index            Indexes original media files
+   find, search     Finds indexed files that match the specified search filters
+   mv, import       Moves media files to originals
+   cp, copy         Copies media files to originals
+   download, dl     Imports media from one or more URLs
+   vision           Computer vision subcommands
+   faces            Face recognition subcommands
+   cameras          Camera management subcommands
+   lenses           Lens management subcommands
+   places           Maps and location information subcommands
+   purge            Updates missing files, photo counts, and album covers
+   cleanup          Removes orphaned index entries, sidecar and thumbnail files
+   optimize         Maintains titles, estimates, and other metadata
+   moments          Creates albums of special moments, trips, and places
+   convert          Creates missing preview images and AVC sidecar files as needed
+   thumbs           (Re-)generates thumbnails based on the current configuration
+   videos, video    Video troubleshooting and editing subcommands
+   migrate          Executes database schema migrations
+   migrations       Database schema migration subcommands
+   backup           Creates an index database backup and/or album YAML backup files
+   restore          Restores the index database and/or album metadata from a backup
+   reset            Resets the index, clears the cache, and removes sidecar files
+   passwd           Changes the local account password of a registered user
+   users, user      User management subcommands
+   clients, client  Client credentials subcommands
+   cluster          Cluster operations and management (portal, nodes)
+   auth, sess       API authentication subcommands
+   audit            Security audit subcommands
+   show             Shows supported formats, features, and config options
+   version          Shows version information
+   config           Displays global config options and their current values
+   connect          Connects your membership account
+   help, h          Shows a list of commands or help for one command
+
+GLOBAL OPTIONS:
+   --auth-mode MODE, -a MODE                                  authentication MODE (public, password) (default: "password") [$PHOTOPRISM_AUTH_MODE]
+   --admin-user USERNAME, --login USERNAME                    USERNAME of the superadmin account that is created on first startup (default: "admin") [$PHOTOPRISM_ADMIN_USER, $PHOTOPRISM_ADMIN_USERNAME]
+   --admin-password PASSWORD, --pw PASSWORD                   initial PASSWORD of the superadmin account (8-72 characters) [$PHOTOPRISM_ADMIN_PASSWORD]
+   --password-length LENGTH                                   minimum password LENGTH in characters (default: 8) [$PHOTOPRISM_PASSWORD_LENGTH]
+   --login-info TEXT                                          custom login footer info TEXT [$PHOTOPRISM_LOGIN_INFO]
+   --oidc-uri URI                                             issuer URI for single sign-on via OpenID Connect, e.g. https://accounts.google.com [$PHOTOPRISM_OIDC_URI]
+   --oidc-client ID                                           client ID for single sign-on via OpenID Connect [$PHOTOPRISM_OIDC_CLIENT]
+   --oidc-secret SECRET                                       client SECRET for single sign-on via OpenID Connect [$PHOTOPRISM_OIDC_SECRET]
+   --oidc-scopes SCOPES                                       client authorization SCOPES for single sign-on via OpenID Connect (default: "openid email profile address") [$PHOTOPRISM_OIDC_SCOPES]
+   --oidc-prompt PROMPT                                       authorization PROMPT for single sign-on via OpenID Connect (login, select_account, consent) [$PHOTOPRISM_OIDC_PROMPT]
+   --oidc-provider NAME                                       custom identity provider NAME, e.g. Google [$PHOTOPRISM_OIDC_PROVIDER]
+   --oidc-icon URI                                            custom identity provider icon URI [$PHOTOPRISM_OIDC_ICON]
+   --oidc-redirect                                            automatically redirects unauthenticated users to the configured identity provider (default: false) [$PHOTOPRISM_OIDC_REDIRECT]
+   --oidc-register                                            allows new users to create an account when they sign in with OpenID Connect (default: false) [$PHOTOPRISM_OIDC_REGISTER]
+   --oidc-logout                                              ends the provider session on sign-out via OpenID Connect RP-initiated logout (default: false) [$PHOTOPRISM_OIDC_LOGOUT]
+   --oidc-username CLAIM                                      preferred username CLAIM for new OpenID Connect users (preferred_username, name, nickname, email) (default: "preferred_username") [$PHOTOPRISM_OIDC_USERNAME]
+   --oidc-webdav                                              allows new OpenID Connect users to use WebDAV when they have a role that allows it (default: false) [$PHOTOPRISM_OIDC_WEBDAV]
+   --disable-oidc                                             disables single sign-on via OpenID Connect, even if an identity provider has been configured (default: false) [$PHOTOPRISM_DISABLE_OIDC]
+   --session-maxage SECONDS                                   session expiration time in SECONDS, doubled for accounts with 2FA (-1 to disable) (default: 1209600) [$PHOTOPRISM_SESSION_MAXAGE]
+   --session-timeout SECONDS                                  session idle time in SECONDS, doubled for accounts with 2FA (-1 to disable) (default: 604800) [$PHOTOPRISM_SESSION_TIMEOUT]
+   --session-cache SECONDS                                    session cache duration in SECONDS (60-3600) (default: 900) [$PHOTOPRISM_SESSION_CACHE]
+   --download-token TOKEN                                     shared static TOKEN for permanent download URLs (leave blank to accept signed tokens only) [$PHOTOPRISM_DOWNLOAD_TOKEN]
+   --download-token-maxage SECONDS                            signed download token lifetime in SECONDS (minimum 900) (default: 3600) [$PHOTOPRISM_DOWNLOAD_TOKEN_MAXAGE]
+   --preview-token TOKEN                                      shared static TOKEN for thumbnail and video streaming URLs (leave blank for an automatic value) [$PHOTOPRISM_PREVIEW_TOKEN]
+   --log-level LEVEL, -l LEVEL                                log message verbosity LEVEL (trace, debug, info, warning, error) (default: "info") [$PHOTOPRISM_LOG_LEVEL]
+   --prod                                                     disables debug mode and only logs startup warnings and errors (default: false) [$PHOTOPRISM_PROD]
+   --debug                                                    enables debug mode for development and troubleshooting (default: false) [$PHOTOPRISM_DEBUG]
+   --trace                                                    enables trace mode to display all debug and trace logs (default: false) [$PHOTOPRISM_TRACE]
+   --storage-path PATH, -s PATH                               writable storage PATH for sidecar, cache, and database files [$PHOTOPRISM_STORAGE_PATH]
+   --storage-case MODE                                        file name case MODE of storage, also used for originals of unknown mode (auto, sensitive, insensitive) (default: "auto") [$PHOTOPRISM_STORAGE_CASE]
+   --storage-free PERCENT                                     minimum free storage in PERCENT required for indexing, importing, and uploads (1-99; -1 to disable) (default: -1) [$PHOTOPRISM_STORAGE_FREE]
+   --config-path PATH, --config PATH, -c PATH                 config storage PATH or options.yml filename (values override CLI flags and environment variables) [$PHOTOPRISM_CONFIG_PATH]
+   --defaults-yaml FILENAME, --defaults FILENAME              default config FILENAME (values do not override CLI flags or environment variables) (default: "/etc/photoprism/defaults.yml") [$PHOTOPRISM_DEFAULTS_YAML]
+   --originals-path PATH, -o PATH                             storage PATH of your original media files (photos and videos) [$PHOTOPRISM_ORIGINALS_PATH]
+   --originals-case MODE                                      file name case MODE of originals (auto, sensitive, insensitive) (default: "auto") [$PHOTOPRISM_ORIGINALS_CASE]
+   --originals-limit MB, --mb MB                              maximum size of a single media file in MB (-1 to disable) (default: 5000) [$PHOTOPRISM_ORIGINALS_LIMIT]
+   --resolution-limit MEGAPIXELS, --mp MEGAPIXELS             maximum resolution of media files in MEGAPIXELS (1-900; -1 to disable) (default: 150) [$PHOTOPRISM_RESOLUTION_LIMIT]
+   --users-path PATH                                          relative PATH to create base and upload subdirectories for users (default: "users") [$PHOTOPRISM_USERS_PATH]
+   --import-path PATH, --im PATH                              base PATH from which files can be imported to originals *optional* [$PHOTOPRISM_IMPORT_PATH]
+   --import-dest PATH                                         relative originals PATH in which files should be imported by default *optional* [$PHOTOPRISM_IMPORT_DEST]
+   --import-allow EXTENSIONS                                  restricts imports to these file types (comma-separated list of EXTENSIONS; leave blank to allow all) [$PHOTOPRISM_IMPORT_ALLOW]
+   --upload-nsfw, -n                                          allows uploads that might be offensive (skips NSFW screening) (default: false) [$PHOTOPRISM_UPLOAD_NSFW]
+   --upload-allow EXTENSIONS                                  further restricts web uploads to these file types (comma-separated list of EXTENSIONS) [$PHOTOPRISM_UPLOAD_ALLOW]
+   --upload-archives                                          allows upload of zip archives (will be extracted before import) (default: false) [$PHOTOPRISM_UPLOAD_ARCHIVES]
+   --upload-limit MB                                          maximum total size of web uploads in MB (-1 to disable) (default: 5000) [$PHOTOPRISM_UPLOAD_LIMIT]
+   --upload-maxage SECONDS                                    maximum age of staged uploads that were not imported in SECONDS (86400-3153600000; -1 to keep them) (default: 604800) [$PHOTOPRISM_UPLOAD_MAXAGE]
+   --cache-path PATH, --ca PATH                               custom cache PATH for sessions and thumbnail files *optional* [$PHOTOPRISM_CACHE_PATH]
+   --temp-path PATH, --tmp PATH                               temporary file PATH *optional* [$PHOTOPRISM_TEMP_PATH]
+   --assets-path PATH, --as PATH                              assets PATH containing static resources like icons, models, and translations [$PHOTOPRISM_ASSETS_PATH]
+   --models-path PATH                                         custom model assets PATH where computer vision models are located [$PHOTOPRISM_MODELS_PATH]
+   --sidecar-path PATH, --sc PATH                             custom relative or absolute sidecar PATH *optional* [$PHOTOPRISM_SIDECAR_PATH]
+   --sidecar-yaml                                             creates YAML sidecar files to back up picture metadata (default: true) [$PHOTOPRISM_SIDECAR_YAML]
+   --usage-info                                               displays storage usage information in the user interface (default: false) [$PHOTOPRISM_USAGE_INFO]
+   --files-quota GB                                           maximum total size of all indexed files in GB (0 for unlimited) (default: 0) [$PHOTOPRISM_FILES_QUOTA]
+   --backup-path PATH, --ba PATH                              custom base PATH for creating and restoring backups *optional* [$PHOTOPRISM_BACKUP_PATH]
+   --backup-schedule SCHEDULE                                 backup SCHEDULE in cron format (e.g. "0 12 * * *" for daily at noon) or at a random time (daily, weekly) (default: "daily") [$PHOTOPRISM_BACKUP_SCHEDULE]
+   --backup-retain NUMBER                                     NUMBER of index backups to keep (-1 to keep all) (default: 3) [$PHOTOPRISM_BACKUP_RETAIN]
+   --backup-database                                          enables regular backups based on the configured schedule (default: true) [$PHOTOPRISM_BACKUP_DATABASE]
+   --backup-albums                                            enables the use of YAML files for backing up album metadata (default: true) [$PHOTOPRISM_BACKUP_ALBUMS]
+   --index-workers NUMBER, --workers NUMBER                   maximum NUMBER of indexing workers, or 'auto' to derive from the available CPU cores (default: "auto") [$PHOTOPRISM_INDEX_WORKERS, $PHOTOPRISM_WORKERS]
+   --index-schedule SCHEDULE                                  indexing SCHEDULE in cron format (e.g. "@every 3h" for every 3 hours; "" to disable) [$PHOTOPRISM_INDEX_SCHEDULE]
+   --wakeup-interval TIME, -i TIME                            TIME between facial recognition, file sync, and metadata worker runs (1-86400s) (default: "15m0s") [$PHOTOPRISM_WAKEUP_INTERVAL]
+   --auto-index SECONDS                                       delay before automatically indexing files in SECONDS when uploading via WebDAV (-1 to disable) (default: 300) [$PHOTOPRISM_AUTO_INDEX]
+   --auto-import SECONDS                                      delay before automatically importing files in SECONDS when uploading via WebDAV (-1 to disable) (default: -1) [$PHOTOPRISM_AUTO_IMPORT]
+   --read-only, -r                                            disables features that require write permission for the originals folder (default: false) [$PHOTOPRISM_READONLY]
+   --experimental, -e                                         enables new features that may be incomplete or unstable (default: false) [$PHOTOPRISM_EXPERIMENTAL]
+   --disable-frontend                                         disables the web user interface so that only the service API endpoints are accessible (default: false) [$PHOTOPRISM_DISABLE_FRONTEND]
+   --disable-settings                                         disables the settings frontend and related API endpoints, e.g. in combination with public mode (default: false) [$PHOTOPRISM_DISABLE_SETTINGS]
+   --disable-backups                                          prevents database and album backups as well as YAML sidecar files from being created (default: false) [$PHOTOPRISM_DISABLE_BACKUPS]
+   --disable-restart                                          prevents admins from restarting the server through the user interface (default: false) [$PHOTOPRISM_DISABLE_RESTART]
+   --disable-webdav                                           prevents other apps from accessing PhotoPrism as a shared network drive (default: false) [$PHOTOPRISM_DISABLE_WEBDAV]
+   --disable-mcp                                              disables the Model Context Protocol (MCP) API endpoint for AI agent integrations (default: false) [$PHOTOPRISM_DISABLE_MCP]
+   --disable-places                                           disables interactive world maps and reverse geocoding (default: false) [$PHOTOPRISM_DISABLE_PLACES]
+   --disable-tensorflow                                       disables face recognition with TensorFlow *deprecated* (default: false) [$PHOTOPRISM_DISABLE_TENSORFLOW]
+   --disable-faces                                            disables face detection and recognition (default: false) [$PHOTOPRISM_DISABLE_FACES]
+   --disable-ffmpeg                                           disables video transcoding and thumbnail extraction with FFmpeg (default: false) [$PHOTOPRISM_DISABLE_FFMPEG]
+   --disable-exiftool                                         disables metadata extraction with ExifTool (required for full Video, Live Photo, and XMP support) (default: false) [$PHOTOPRISM_DISABLE_EXIFTOOL]
+   --disable-sips                                             disables file conversion using the sips command under macOS (default: false) [$PHOTOPRISM_DISABLE_SIPS]
+   --disable-darktable                                        disables conversion of RAW images with Darktable (default: false) [$PHOTOPRISM_DISABLE_DARKTABLE]
+   --disable-rawtherapee                                      disables conversion of RAW images with RawTherapee (default: false) [$PHOTOPRISM_DISABLE_RAWTHERAPEE]
+   --disable-imagemagick                                      disables conversion of image files with ImageMagick (default: false) [$PHOTOPRISM_DISABLE_IMAGEMAGICK]
+   --disable-heifconvert                                      disables conversion of HEIC images with libheif (default: false) [$PHOTOPRISM_DISABLE_HEIFCONVERT]
+   --disable-rsvgconvert                                      disables conversion of SVG graphics with librsvg (default: false) [$PHOTOPRISM_DISABLE_RSVGCONVERT]
+   --disable-vectors                                          disables vector graphics support (default: false) [$PHOTOPRISM_DISABLE_VECTORS]
+   --disable-jpegxl                                           disables JPEG XL file format support (default: false) [$PHOTOPRISM_DISABLE_JPEGXL]
+   --disable-raw                                              disables indexing and conversion of RAW images (default: false) [$PHOTOPRISM_DISABLE_RAW]
+   --raw-presets                                              enables custom user presets when converting RAW images (reduces performance) (default: false) [$PHOTOPRISM_RAW_PRESETS]
+   --exif-bruteforce                                          performs a brute-force search if no Exif headers were found (default: false) [$PHOTOPRISM_EXIF_BRUTEFORCE]
+   --default-locale CODE, --lang CODE                         default user interface language CODE (default: "en") [$PHOTOPRISM_DEFAULT_LOCALE]
+   --default-timezone NAME, --tz NAME                         default time zone NAME, e.g. for scheduling backups (default: "Local") [$PHOTOPRISM_DEFAULT_TIMEZONE]
+   --default-theme NAME                                       default user interface theme NAME [$PHOTOPRISM_DEFAULT_THEME]
+   --places-locale CODE                                       location details language CODE, e.g. en, de, or local (default: "local") [$PHOTOPRISM_PLACES_LOCALE]
+   --app-name NAME                                            app NAME when installed as a Progressive Web App (PWA) [$PHOTOPRISM_APP_NAME]
+   --app-mode MODE                                            app display MODE (fullscreen, standalone, minimal-ui, browser) (default: "standalone") [$PHOTOPRISM_APP_MODE]
+   --app-icon ICON                                            home screen app ICON (logo, app, crisp, mint, bold, square, bloom, flower, ring, glass, neon, rainbow) [$PHOTOPRISM_APP_ICON]
+   --app-color COLOR                                          app background and splash screen COLOR (default: "#19191a") [$PHOTOPRISM_APP_COLOR]
+   --legal-info TEXT                                          legal information TEXT, displayed in the page footer [$PHOTOPRISM_LEGAL_INFO]
+   --legal-url URL                                            legal information URL [$PHOTOPRISM_LEGAL_URL]
+   --wallpaper-uri URI                                        login screen background image URI [$PHOTOPRISM_WALLPAPER_URI]
+   --site-url URL                                             canonical site URL used in generated links and to determine HTTPS/TLS (scheme://host[:port]) (default: "http://localhost:2342/") [$PHOTOPRISM_SITE_URL]
+   --site-author OWNER                                        site OWNER shown in the author meta tag [$PHOTOPRISM_SITE_AUTHOR]
+   --site-name NAME                                           short NAME for identifying this instance within a cluster *optional* [$PHOTOPRISM_SITE_NAME]
+   --site-title TITLE                                         main TITLE shown in the web interface and meta tags [$PHOTOPRISM_SITE_TITLE]
+   --site-caption CAPTION                                     short CAPTION or tagline shown alongside the title (default: "AI-Powered Photos App") [$PHOTOPRISM_SITE_CAPTION]
+   --site-description DESCRIPTION                             longer DESCRIPTION shown in SEO and social meta tags *optional* [$PHOTOPRISM_SITE_DESCRIPTION]
+   --site-favicon FILENAME                                    custom favicon FILENAME for web browsers *optional* [$PHOTOPRISM_SITE_FAVICON]
+   --site-preview URL                                         sharing preview image URL [$PHOTOPRISM_SITE_PREVIEW]
+   --cdn-url URL                                              content delivery network URL [$PHOTOPRISM_CDN_URL]
+   --cdn-video                                                streams videos over the specified CDN (default: false) [$PHOTOPRISM_CDN_VIDEO]
+   --cors-origin URL                                          origin URL allowed to make cross-origin requests (leave blank to disable, * to allow all) [$PHOTOPRISM_CORS_ORIGIN]
+   --cors-headers HEADERS                                     one or more HEADERS that browsers should see when performing a cross-origin request (default: "Accept, Accept-Ranges, Content-Disposition, Content-Encoding, Content-Range, Location") [$PHOTOPRISM_CORS_HEADERS]
+   --cors-methods METHODS                                     one or more METHODS that may be used when performing a cross-origin request (default: "GET, HEAD, OPTIONS") [$PHOTOPRISM_CORS_METHODS]
+   --cluster-domain DOMAIN                                    cluster DOMAIN (lowercase DNS name; 1–63 chars) [$PHOTOPRISM_CLUSTER_DOMAIN]
+   --cluster-oidc                                             use the cluster Portal as this instance's OIDC login provider (default: false) [$PHOTOPRISM_CLUSTER_OIDC]
+   --portal-url URL                                           base URL of the cluster management portal (default: "https://portal.${PHOTOPRISM_CLUSTER_DOMAIN}") [$PHOTOPRISM_PORTAL_URL]
+   --join-token TOKEN                                         secret TOKEN required to join a cluster; min 24 chars [$PHOTOPRISM_JOIN_TOKEN]
+   --node-name NAME                                           node NAME (unique in cluster domain; [a-z0-9-]{1,32}) [$PHOTOPRISM_NODE_NAME]
+   --node-role ROLE                                           node ROLE (instance or service) [$PHOTOPRISM_NODE_ROLE]
+   --jwks-url URL                                             JWKS endpoint URL provided by the cluster portal for JWT verification [$PHOTOPRISM_JWKS_URL]
+   --jwks-cache-ttl SECONDS                                   JWKS cache lifetime in SECONDS (default 300, max 3600) (default: 300) [$PHOTOPRISM_JWKS_CACHE_TTL]
+   --jwt-scope SCOPES                                         allowed JWT SCOPES (space separated). Leave empty to accept defaults (default: "config cluster vision metrics mcp users") [$PHOTOPRISM_JWT_SCOPE]
+   --jwt-leeway SECONDS                                       JWT clock skew allowance in SECONDS (default 60, max 300) (default: 60) [$PHOTOPRISM_JWT_LEEWAY]
+   --jwt-rotate-days DAYS                                     portal JWT signing key lifetime in DAYS, -1 to rotate manually only (default: 90) [$PHOTOPRISM_JWT_ROTATE_DAYS]
+   --portal-oidc-issuer URL                                   Portal OIDC OP issuer URL advertised in discovery and ID tokens (defaults to site-url) [$PHOTOPRISM_PORTAL_OIDC_ISSUER]
+   --portal-oidc-ttl SECONDS                                  Portal OIDC OP access/ID-token lifetime in SECONDS (default 300, max 900) (default: 300) [$PHOTOPRISM_PORTAL_OIDC_TTL]
+   --portal-oidc-code-ttl SECONDS                             Portal OIDC OP authorization-code lifetime in SECONDS (default 60, max 300) (default: 60) [$PHOTOPRISM_PORTAL_OIDC_CODE_TTL]
+   --portal-oidc-default-policy chooser                       Portal OIDC OP routing policy when a user has access to multiple instances (chooser or `direct`) (default: "chooser") [$PHOTOPRISM_PORTAL_OIDC_DEFAULT_POLICY]
+   --advertise-url URL                                        advertised URL for intra-cluster calls (scheme://host[:port]) [$PHOTOPRISM_ADVERTISE_URL]
+   --https-proxy URL                                          proxy server URL to be used for outgoing connections *optional* [$PHOTOPRISM_HTTPS_PROXY]
+   --https-proxy-insecure                                     ignores invalid HTTPS certificates when using a proxy (default: false) [$PHOTOPRISM_HTTPS_PROXY_INSECURE]
+   --trusted-platform NAME                                    trusted client IP header NAME, e.g. when running behind a cloud provider load balancer [$PHOTOPRISM_TRUSTED_PLATFORM]
+   --trusted-proxy CIDR [ --trusted-proxy CIDR ]              CIDR ranges or IPv4/v6 addresses from which reverse proxy headers can be trusted, separated by commas (default: 172.16.0.0/12, 127.0.0.0/8, ::1) [$PHOTOPRISM_TRUSTED_PROXY]
+   --proxy-client-header NAME [ --proxy-client-header NAME ]  proxy client IP header NAME, e.g. X-Forwarded-For, X-Client-IP, X-Real-IP, or CF-Connecting-IP (default: "X-Forwarded-For") [$PHOTOPRISM_PROXY_CLIENT_HEADER]
+   --proxy-proto-header NAME [ --proxy-proto-header NAME ]    proxy protocol header NAME (default: "X-Forwarded-Proto") [$PHOTOPRISM_PROXY_PROTO_HEADER]
+   --proxy-proto-https NAME [ --proxy-proto-https NAME ]      forwarded HTTPS protocol NAME (default: "https") [$PHOTOPRISM_PROXY_PROTO_HTTPS]
+   --services-cidr CIDR                                       comma-separated CIDR ranges or IPs allowed for outbound service connections, e.g. 172.18.0.0/16 [$PHOTOPRISM_SERVICES_CIDR]
+   --disable-tls                                              disables HTTPS/TLS even if the site URL starts with https:// and a certificate or TLS email is configured (default: false) [$PHOTOPRISM_DISABLE_TLS]
+   --default-tls                                              uses a self-signed HTTPS/TLS certificate if no other certificate is available (default: false) [$PHOTOPRISM_DEFAULT_TLS]
+   --tls-email EMAIL                                          EMAIL address to obtain an HTTPS certificate from Let's Encrypt, which must reach port 443 [$PHOTOPRISM_TLS_EMAIL]
+   --tls-cert FILENAME                                        public HTTPS certificate FILENAME (.crt), ignored for Unix domain sockets and with automatic HTTPS [$PHOTOPRISM_TLS_CERT]
+   --tls-key FILENAME                                         private HTTPS key FILENAME (.key), ignored for Unix domain sockets and with automatic HTTPS [$PHOTOPRISM_TLS_KEY]
+   --disable-sts                                              disables HTTP Strict-Transport-Security (STS) header (default: false) [$PHOTOPRISM_DISABLE_STS]
+   --sts-seconds TIME                                         TIME for the browser to remember that the site is to be accessed only via HTTPS (0 to disable) (default: 31536000) [$PHOTOPRISM_STS_SECONDS]
+   --sts-subdomains                                           applies rule to all subdomains (default: false) [$PHOTOPRISM_STS_SUBDOMAINS]
+   --sts-preload                                              allows submission to Google's HSTS preload service (default: false) [$PHOTOPRISM_STS_PRELOAD]
+   --auth-limit TOKENS                                        maximum number of consecutive invalid access TOKENS from a single IP (-1 to disable) (default: 60) [$PHOTOPRISM_AUTH_LIMIT]
+   --auth-interval DURATION                                   average DURATION between invalid access tokens from a single IP (1-3600s) (default: "10s") [$PHOTOPRISM_AUTH_INTERVAL]
+   --login-limit LOGINS                                       maximum number of consecutive failed LOGINS from a single IP (-1 to disable) (default: 10) [$PHOTOPRISM_LOGIN_LIMIT]
+   --login-interval DURATION                                  average DURATION between failed logins from a single IP (1-3600s) (default: "1m0s") [$PHOTOPRISM_LOGIN_INTERVAL]
+   --ips-limit ATTEMPTS                                       maximum number of malicious request ATTEMPTS before a client IP is blocked (-1 to disable) (default: 3) [$PHOTOPRISM_IPS_LIMIT]
+   --ips-interval DURATION                                    average DURATION between malicious request attempts from a single IP (1-86400s) (default: "1h0m0s") [$PHOTOPRISM_IPS_INTERVAL]
+   --http-csp HEADER, --csp HEADER                            HTTP Content-Security-Policy (CSP) HEADER [$PHOTOPRISM_HTTP_CSP]
+   --http-cto HEADER, --cto HEADER                            HTTP X-Content-Type-Options HEADER (default: "nosniff") [$PHOTOPRISM_HTTP_CTO]
+   --http-coop HEADER, --coop HEADER                          HTTP Cross-Origin-Opener-Policy (COOP) HEADER (default: "same-origin") [$PHOTOPRISM_HTTP_COOP]
+   --http-referrer-policy HEADER                              HTTP Referrer-Policy HEADER (default: "same-origin") [$PHOTOPRISM_HTTP_REFERRER_POLICY]
+   --http-frame-options HEADER                                HTTP X-Frame-Options HEADER (default: "DENY") [$PHOTOPRISM_HTTP_FRAME_OPTIONS]
+   --http-mode MODE, --mode MODE                              Web server MODE (debug, release, test) [$PHOTOPRISM_HTTP_MODE]
+   --http-compression METHODS, -z METHODS                     enabled compression METHODS in order of preference (gzip, zstd, none), e.g. "zstd,gzip" [$PHOTOPRISM_HTTP_COMPRESSION]
+   --http-header-timeout DURATION                             timeout for reading request headers as DURATION (default: "15s") [$PHOTOPRISM_HTTP_HEADER_TIMEOUT]
+   --http-header-bytes BYTES                                  maximum request header size in BYTES (default: 1048576) [$PHOTOPRISM_HTTP_HEADER_BYTES]
+   --http-idle-timeout DURATION                               timeout for idle keep-alive connections as DURATION (default: "3m0s") [$PHOTOPRISM_HTTP_IDLE_TIMEOUT]
+   --http-cache-public                                        allows static content to be cached by a CDN or caching proxy (default: false) [$PHOTOPRISM_HTTP_CACHE_PUBLIC]
+   --http-cache-maxage SECONDS                                time in SECONDS until cached content expires (default: 2592000) [$PHOTOPRISM_HTTP_CACHE_MAXAGE]
+   --http-video-maxage SECONDS                                time in SECONDS until cached videos expire (default: 21600) [$PHOTOPRISM_HTTP_VIDEO_MAXAGE]
+   --http-host IP, --ip IP                                    Web server IP address or Unix domain socket, e.g. unix:/var/run/photoprism.sock?force=true&mode=660 (default: "0.0.0.0") [$PHOTOPRISM_HTTP_HOST]
+   --http-port NUMBER, --port NUMBER                          Web server port NUMBER, ignored for Unix domain sockets (default: 2342) [$PHOTOPRISM_HTTP_PORT]
+   --http-hostname HOSTNAME [ --http-hostname HOSTNAME ]      serve requests for this HOSTNAME only [$PHOTOPRISM_HTTP_HOSTNAME]
+   --database-driver DRIVER, --db DRIVER                      database DRIVER (sqlite, mysql) (default: "sqlite") [$PHOTOPRISM_DATABASE_DRIVER]
+   --database-dsn DSN, --dsn DSN                              database connection DSN (sqlite file, optional for mysql) [$PHOTOPRISM_DATABASE_DSN]
+   --database-name NAME, --db-name NAME                       database schema NAME (default: "photoprism") [$PHOTOPRISM_DATABASE_NAME]
+   --database-server HOST, --db-server HOST                   database HOST incl. port, e.g. "mariadb:3306" (or socket path) [$PHOTOPRISM_DATABASE_SERVER]
+   --database-user NAME, --db-user NAME                       database user NAME (default: "photoprism") [$PHOTOPRISM_DATABASE_USER]
+   --database-password PASSWORD, --db-pass PASSWORD           database user PASSWORD [$PHOTOPRISM_DATABASE_PASSWORD]
+   --database-timeout SECONDS                                 timeout in SECONDS for establishing a database connection (1-60) (default: 15) [$PHOTOPRISM_DATABASE_TIMEOUT]
+   --database-conns NUMBER                                    maximum NUMBER of open database connections (default: 0) [$PHOTOPRISM_DATABASE_CONNS]
+   --database-conns-idle NUMBER                               maximum NUMBER of idle database connections (default: 0) [$PHOTOPRISM_DATABASE_CONNS_IDLE]
+   --ffmpeg-bin COMMAND                                       FFmpeg COMMAND for video transcoding and thumbnail extraction (default: "ffmpeg") [$PHOTOPRISM_FFMPEG_BIN]
+   --ffmpeg-encoder NAME, --vc NAME                           FFmpeg AVC video encoder NAME (default: "libx264") [$PHOTOPRISM_FFMPEG_ENCODER]
+   --ffmpeg-size PIXELS                                       encoding resolution limit in PIXELS (720-15360) (default: 4096) [$PHOTOPRISM_FFMPEG_SIZE]
+   --ffmpeg-quality QUALITY                                   encoding QUALITY (1-100, where 100 is almost lossless) (default: 50) [$PHOTOPRISM_FFMPEG_QUALITY]
+   --ffmpeg-bitrate LIMIT                                     bitrate LIMIT in Mbps for forced transcoding of non-AVC videos, also limits the NVIDIA peak bitrate (1-960; -1 to disable) (default: 60) [$PHOTOPRISM_FFMPEG_BITRATE]
+   --ffmpeg-fisheye-fov DEGREES                               field of view in DEGREES for dewarping fisheye 360° originals (90-360) (default: 190) [$PHOTOPRISM_FFMPEG_FISHEYE_FOV]
+   --ffmpeg-preset PRESET                                     FFmpeg compression PRESET when using an encoder that supports it, e.g. fast, medium, or slow (default: "fast") [$PHOTOPRISM_FFMPEG_PRESET]
+   --ffmpeg-device PATH                                       FFmpeg device PATH when using a hardware encoder that supports it as parameter [$PHOTOPRISM_FFMPEG_DEVICE]
+   --ffmpeg-map-video MAP                                     transcoding video stream MAP (default: `0:v:0`) [$PHOTOPRISM_FFMPEG_MAP_VIDEO]
+   --ffmpeg-map-audio MAP                                     transcoding audio stream MAP (default: `0:a:0?`) [$PHOTOPRISM_FFMPEG_MAP_AUDIO]
+   --ffmpeg-exclude FORMATS                                   container and codec FORMATS not to be processed by FFmpeg, separated by commas (default: "magy, vfw") [$PHOTOPRISM_FFMPEG_EXCLUDE, $PHOTOPRISM_FFMPEG_BLACKLIST]
+   --convert-timeout MINUTES                                  timeout in MINUTES for converting still images, documents, and RAW files (-1 to disable) (default: 10) [$PHOTOPRISM_CONVERT_TIMEOUT]
+   --transcode-timeout MINUTES                                time in MINUTES after which transcoding a video is given up (disabled by default) (default: -1) [$PHOTOPRISM_TRANSCODE_TIMEOUT]
+   --exiftool-bin COMMAND                                     ExifTool COMMAND for extracting metadata (default: "exiftool") [$PHOTOPRISM_EXIFTOOL_BIN]
+   --sips-bin COMMAND                                         Sips COMMAND for media file conversion *macOS only* (default: "sips") [$PHOTOPRISM_SIPS_BIN]
+   --sips-exclude EXTENSIONS                                  file EXTENSIONS not to be used with Sips *macOS only* (default: "avif, avifs, thm") [$PHOTOPRISM_SIPS_EXCLUDE, $PHOTOPRISM_SIPS_BLACKLIST]
+   --darktable-bin COMMAND                                    Darktable CLI COMMAND for RAW to JPEG conversion (default: "darktable-cli") [$PHOTOPRISM_DARKTABLE_BIN]
+   --darktable-exclude EXTENSIONS                             file EXTENSIONS not to be used with Darktable (default: "thm") [$PHOTOPRISM_DARKTABLE_EXCLUDE, $PHOTOPRISM_DARKTABLE_BLACKLIST]
+   --darktable-cache-path PATH                                custom Darktable cache PATH [$PHOTOPRISM_DARKTABLE_CACHE_PATH]
+   --darktable-config-path PATH                               custom Darktable config PATH [$PHOTOPRISM_DARKTABLE_CONFIG_PATH]
+   --rawtherapee-bin COMMAND                                  RawTherapee CLI COMMAND for RAW to JPEG conversion (default: "rawtherapee-cli") [$PHOTOPRISM_RAWTHERAPEE_BIN]
+   --rawtherapee-exclude EXTENSIONS                           file EXTENSIONS not to be used with RawTherapee (default: "dng, thm") [$PHOTOPRISM_RAWTHERAPEE_EXCLUDE, $PHOTOPRISM_RAWTHERAPEE_BLACKLIST]
+   --imagemagick-bin COMMAND                                  ImageMagick CLI COMMAND for image file conversion (default: "convert") [$PHOTOPRISM_IMAGEMAGICK_BIN]
+   --imagemagick-exclude EXTENSIONS                           file EXTENSIONS not to be used with ImageMagick (default: "heif, heic, heics, avif, avifs, jxl, thm") [$PHOTOPRISM_IMAGEMAGICK_EXCLUDE, $PHOTOPRISM_IMAGEMAGICK_BLACKLIST]
+   --heifconvert-bin COMMAND                                  libheif HEIC image conversion COMMAND (default: heif-dec) [$PHOTOPRISM_HEIFCONVERT_BIN]
+   --rsvgconvert-bin COMMAND                                  librsvg SVG graphics conversion COMMAND (default: "rsvg-convert") [$PHOTOPRISM_RSVGCONVERT_BIN]
+   --heifconvert-orientation ORIENTATION                      Exif ORIENTATION of images generated with libheif (keep, reset) (default: "keep") [$PHOTOPRISM_HEIFCONVERT_ORIENTATION]
+   --thumb-library LIBRARY, --thumbs LIBRARY                  image processing LIBRARY to be used for generating thumbnails (auto, vips) (default: "auto") [$PHOTOPRISM_THUMB_LIBRARY]
+   --thumb-color PROFILE                                      standard color PROFILE for thumbnails (auto, preserve, srgb, none) (default: "auto") [$PHOTOPRISM_THUMB_COLOR]
+   --thumb-size PIXELS                                        maximum size of pre-generated thumbnails in PIXELS (720-15360) (default: 1920) [$PHOTOPRISM_THUMB_SIZE]
+   --thumb-size-uncached PIXELS                               maximum size of thumbnails generated on demand in PIXELS (720-15360) (default: 7680) [$PHOTOPRISM_THUMB_SIZE_UNCACHED]
+   --thumb-size-face PIXELS                                   maximum size of face crop sources rendered on demand in PIXELS (720-15360; 0 to disable) (default: 4096) [$PHOTOPRISM_THUMB_SIZE_FACE]
+   --thumb-uncached, -u                                       generates missing thumbnails on demand (high memory and cpu usage) (default: false) [$PHOTOPRISM_THUMB_UNCACHED]
+   --jpeg-quality QUALITY, -q QUALITY                         higher values increase the image QUALITY and file size (25-100) (default: "83") [$PHOTOPRISM_JPEG_QUALITY]
+   --jpeg-size PIXELS                                         maximum size of generated JPEG images in PIXELS (720-30000) (default: 15360) [$PHOTOPRISM_JPEG_SIZE]
+   --png-size PIXELS                                          maximum size of generated PNG images in PIXELS (720-30000) (default: 15360) [$PHOTOPRISM_PNG_SIZE]
+   --vision-yaml FILENAME                                     computer vision model configuration FILENAME *optional* [$PHOTOPRISM_VISION_YAML]
+   --vision-api                                               enables the computer vision API endpoints under /api/v1/vision (requires authorization) (default: false) [$PHOTOPRISM_VISION_API]
+   --vision-uri URI                                           vision service base URI, e.g. https://example.com/api/v1/vision (leave blank to disable) [$PHOTOPRISM_VISION_URI]
+   --vision-key TOKEN                                         vision service access TOKEN *optional* [$PHOTOPRISM_VISION_KEY]
+   --vision-schedule SCHEDULE                                 vision worker SCHEDULE in cron format (e.g. "0 12 * * *" for daily at noon) or at a random time (daily, weekly) [$PHOTOPRISM_VISION_SCHEDULE]
+   --vision-filter FILTER                                     vision worker search FILTER applied to scheduled runs (same syntax as photoprism vision run) (default: "public:true") [$PHOTOPRISM_VISION_FILTER]
+   --onnx-provider PROVIDER                                   execution PROVIDER for ONNX inference (cpu, cuda), falls back to the CPU when unavailable (default: "cpu") [$PHOTOPRISM_ONNX_PROVIDER]
+   --labels-model MODE                                        image classification MODE (auto, none) (default: auto) [$PHOTOPRISM_LABELS_MODEL]
+   --nsfw-model MODE                                          NSFW detection MODE (auto, none, labels) (default: auto) [$PHOTOPRISM_NSFW_MODEL]
+   --detect-nsfw                                              flags newly added pictures as private if they might be offensive (uses the configured NSFW model) (default: false) [$PHOTOPRISM_DETECT_NSFW]
+   --xmp-faces                                                imports face regions and names from XMP metadata as people markers (default: false) [$PHOTOPRISM_XMP_FACES]
+   --face-run WHEN                                            WHEN face detection and recognition should run (auto, always, on-index, newly-indexed, on-schedule, on-demand, manual, never) (default: auto) [$PHOTOPRISM_FACE_RUN]
+   --face-detector NAME                                       face detection model NAME (auto, yunet, none), derived from the face model unless named (default: yunet) [$PHOTOPRISM_FACE_DETECTOR]
+   --face-detector-threads COUNT                              face detection thread COUNT per indexing worker, derived from the CPU cores when unset (default: auto) [$PHOTOPRISM_FACE_DETECTOR_THREADS]
+   --face-size PIXELS                                         minimum size of faces in PIXELS (10-10000) (default: 25) [$PHOTOPRISM_FACE_SIZE]
+   --face-size-retry PIXELS                                   minimum size of faces in PIXELS when a picture would otherwise have none, -1 to disable (default: 10 (20 where a crop can reach no further than 1920, off at 720)) [$PHOTOPRISM_FACE_SIZE_RETRY]
+   --face-score QUALITY                                       minimum face QUALITY score (1-100; -1 to disable), calibrated per detector when unset (default: 65) [$PHOTOPRISM_FACE_SCORE]
+   --face-migrate-size PIXELS                                 minimum size of faces in PIXELS when a migration re-detects them (default: 10) [$PHOTOPRISM_FACE_MIGRATE_SIZE]
+   --face-migrate-score QUALITY                               minimum face QUALITY score (1-100) while a migration re-detects them, -1 disables the check (default: 50) [$PHOTOPRISM_FACE_MIGRATE_SCORE]
+   --face-overlap PERCENT                                     face area overlap threshold in PERCENT (1-100) (default: 42) [$PHOTOPRISM_FACE_OVERLAP]
+   --face-model NAME                                          face embedding model NAME (auto, sface, none), changed with photoprism faces migrate (default: sface) [$PHOTOPRISM_FACE_MODEL]
+   --face-model-threads COUNT                                 face embedding thread COUNT, derived from the CPU cores when unset (default: auto) [$PHOTOPRISM_FACE_MODEL_THREADS]
+   --face-cluster-size PIXELS                                 minimum size of automatically clustered faces in embedding source PIXELS (20-10000), calibrated per face model when unset (default: 112) [$PHOTOPRISM_FACE_CLUSTER_SIZE]
+   --face-cluster-score QUALITY                               minimum QUALITY score of automatically clustered faces (1-100; -1 to disable), calibrated per detector when unset (default: 85) [$PHOTOPRISM_FACE_CLUSTER_SCORE]
+   --face-cluster-core NUMBER                                 NUMBER of faces forming a cluster core (2-100) (default: 5) [$PHOTOPRISM_FACE_CLUSTER_CORE]
+   --face-cluster-core-retry NUMBER                           NUMBER of faces forming a cluster core in a second pass over what matching left unclustered, -1 to disable (default: 4 (off where face-cluster-core is below 5)) [$PHOTOPRISM_FACE_CLUSTER_CORE_RETRY]
+   --face-cluster-dist DISTANCE                               similarity DISTANCE of faces forming a cluster core (collision distance to 1.25), calibrated per face model when unset (default: 0.72) [$PHOTOPRISM_FACE_CLUSTER_DIST]
+   --face-cluster-radius RADIUS                               maximum cluster RADIUS accepted for automatic matches, calibrated per face model when unset; radius plus match distance may not exceed 1.25 (default: 0.7) [$PHOTOPRISM_FACE_CLUSTER_RADIUS]
+   --face-cluster-percentile PERCENTILE                       PERCENTILE of member distances that determines a cluster's radius (1-100; 100 uses the maximum) (default: 95) [$PHOTOPRISM_FACE_CLUSTER_PERCENTILE]
+   --face-match-dist OFFSET                                   similarity OFFSET for matching faces with existing clusters, calibrated per face model when unset; radius plus match distance may not exceed 1.25 (default: 0.25) [$PHOTOPRISM_FACE_MATCH_DIST]
+   --face-match-margin DISTANCE                               minimum DISTANCE by which the best matching cluster must beat the runner-up (-1 to disable) (default: 0.01) [$PHOTOPRISM_FACE_MATCH_MARGIN]
+   --face-collision-dist DISTANCE                             minimum collision discrimination DISTANCE (greater than 0, up to 1), the same for every face model (default: 0.05) [$PHOTOPRISM_FACE_COLLISION_DIST]
+   --face-epsilon-dist DELTA                                  collision tolerance DELTA added to maximum match distances (up to 0.01), the same for every face model (default: 0.001) [$PHOTOPRISM_FACE_EPSILON_DIST]
+   --pid-filename FILENAME                                    process id FILENAME *daemon-mode only* [$PHOTOPRISM_PID_FILENAME]
+   --log-filename FILENAME                                    server log FILENAME *daemon-mode only* [$PHOTOPRISM_LOG_FILENAME]
+   --help, -h                                                 show help
+   --version, -v                                              print the version
+
+COPYRIGHT:
+   (c) 2018-2026 PhotoPrism UG. All rights reserved.

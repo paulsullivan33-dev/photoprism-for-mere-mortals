@@ -1,0 +1,26 @@
+site_name: PhotoPrism for Mere Mortals
+site_description: A self-hosted photo library that indexes the folder you already have. Reading dates, places and labels out of your files, finding faces with models on your own machine, and serving a searchable web app, with the limits stated plainly.
+site_url: https://paulsullivan33-dev.github.io/photoprism-for-mere-mortals/
+copyright: 'Part of <a href="https://paulsullivan33-dev.github.io/mere-mortals/">For Mere Mortals</a> · Text <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>, code MIT'
+
+# Guides live at the repo root (nice for GitHub browsing).
+# The deploy workflow copies them into docs/ before building.
+theme:
+  name: material
+
+nav:
+  - Home: index.md
+  - What PhotoPrism Is: what-photoprism-is.md
+  - The Moving Parts: the-moving-parts.md
+  - Installing PhotoPrism: installing-photoprism.md
+  - Your First Library: your-first-library.md
+  - How Indexing Reads Your Photos: how-indexing-reads-photos.md
+  - Search and Browsing: search-and-browsing.md
+  - Faces and People: faces-and-people.md
+  - Albums, Sharing and the Archive: albums-sharing-and-the-archive.md
+  - Recipes: recipes.md
+  - The Neighbours: the-neighbours.md
+  - Limits: limits.md
+  - Troubleshooting: troubleshooting.md
+  - Glossary: glossary.md
+  - Writing Criteria: criteria.md

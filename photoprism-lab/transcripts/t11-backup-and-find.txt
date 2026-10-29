@@ -1,0 +1,28 @@
+$ photoprism find "label:church" (command-line search over the same index)
+gps-control.jpg
+harbour-sunrise.jpg
+
+$ photoprism backup
+NAME:
+   photoprism backup - Creates an index database backup and/or album YAML backup files
+
+USAGE:
+   photoprism backup [command options] [filename]
+
+DESCRIPTION:
+   A custom filename for the database backup (or - to send the backup to stdout) can optionally be passed as argument.
+
+$ what the backup left behind
+storage/backup/albums/album/atnopx8blx96bq5w.yml
+storage/backup/serial
+$ photoprism backup <file>
+time="2026-10-29T19:54:42Z" level=info msg="faces: loading yunet on the cpu"
+time="2026-10-29T19:54:43Z" level=info msg="faces: loading sface on the cpu"
+time="2026-10-29T19:54:43Z" level=info msg="Become a member today, support our mission and enjoy our member benefits! 💎"
+time="2026-10-29T19:54:43Z" level=info msg="Visit https://www.photoprism.app/membership/ to learn more."
+time="2026-10-29T19:54:43Z" level=info msg="backup: creating database backup file index-backup.sql"
+time="2026-10-29T19:54:43Z" level=info msg="completed in 635.411965ms"
+-rw------- 1 root root 53973 Oct 29 19:54 index-backup.sql
+PRAGMA foreign_keys=OFF;
+BEGIN TRANSACTION;
+CREATE TABLE IF NOT EXISTS "versions" ("id" integer primary key autoincrement,"version" varchar(255),"edition" varchar(255),"error" varchar(255),"created_at

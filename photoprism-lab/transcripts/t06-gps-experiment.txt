@@ -1,0 +1,18 @@
+$ exiftool reads the original fixture (independent reader)
+ExifIFD 2024:06:14 06:12:00
+Composite 64 deg 8' 47.76" N, 21 deg 56' 33.36" W
+IFD0 Drawn sunrise over a harbour, lab fixture
+
+$ a copy with its GPS rewritten by exiftool (same values)
+    1 image files updated
+
+$ photoprism index (the new copy only changes)
+time="2026-10-29T19:12:02Z" level=info msg="media: generated 7 thumbnails for harbour-sunrise-exiftool.jpg [125.280888ms]"
+time="2026-10-29T19:12:03Z" level=info msg="vision: generated 2 labels for harbour-sunrise-exiftool.jpg [793.25296ms]"
+time="2026-10-29T19:12:08Z" level=info msg="index: added main jpg file harbour-sunrise-exiftool.jpg"
+time="2026-10-29T19:12:08Z" level=info msg="index: updated 1 file [5.492382622s]"
+time="2026-10-29T19:12:08Z" level=info msg="library: indexed 9 files in 37.39189814s"
+
+$ the two harbour rows in the index
+photo_title|taken_at|photo_lat|photo_lng|photo_country
+Harbour Sunrise / 2024|2024-06-14 06:12:00+00:00|0.0|0.0|zz

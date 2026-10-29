@@ -1,0 +1,7 @@
+$ create an album and put the Reykjavik photo in it
+album uid: atnopx8blx96bq5w
+{"added":[{"PhotoUID":"ptnoo05vclw9kfnf","AlbumUID":"atnopx8blx96bq5w","Order":0,"Hidden":false,"Missing":false,"Created
+$ the album, read back
+- Lab Favourites | photos: 1
+
+$ stop the server

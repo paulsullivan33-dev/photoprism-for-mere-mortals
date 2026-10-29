@@ -1,0 +1,24 @@
+$ photos table columns (place-related)
+taken_at
+taken_at_local
+taken_src
+photo_title
+title_src
+place_id
+place_src
+photo_lat
+photo_lng
+photo_country
+
+$ titles, dates, coordinates as indexed
+photo_title|taken_at|photo_lat|photo_lng|photo_country
+Mountain Lake / 2023|2023-10-02 15:40:00+00:00|0.0|0.0|zz
+Still Life / 2023|2023-10-03 11:25:00+00:00|0.0|0.0|zz
+Harbour Sunrise / 2024|2024-06-14 06:12:00+00:00|0.0|0.0|zz
+City Squares / 2024|2024-06-14 09:05:00+00:00|0.0|0.0|zz
+Red Circle Study / 2025|2025-01-20 12:00:00+00:00|0.0|0.0|zz
+Chart Lines|2026-10-29 18:37:08+00:00|0.0|0.0|zz
+
+$ places table
+place_label|place_city|place_country
+Unknown|Unknown|zz

@@ -1,0 +1,27 @@
+$ files table: both harbour files under one photo?
+file_name|photo_id|file_primary
+harbour-sunrise.jpg|4|1
+harbour-sunrise-exiftool.jpg|8|1
+$ photo count / file count
+photos: 8
+files: 8
+
+$ rename the control copy so it cannot stack, re-index
+time="2026-10-29T19:22:40Z" level=info msg="purge: removing missing files in originals"
+time="2026-10-29T19:22:40Z" level=info msg="purge: flagged file harbour-sunrise-exiftool.jpg as missing"
+time="2026-10-29T19:22:40Z" level=info msg="purge: cannot find primary file for ptnoo05vclw9kfnf"
+time="2026-10-29T19:23:23Z" level=info msg="files: moved existing sidecar to gps-control.yml"
+time="2026-10-29T19:23:24Z" level=info msg="vision: generated 2 labels for gps-control.jpg [978.398466ms]"
+time="2026-10-29T19:23:25Z" level=info msg="index: updated main jpg file gps-control.jpg"
+time="2026-10-29T19:23:25Z" level=info msg="index: updated 1 file [2.516891047s]"
+time="2026-10-29T19:23:25Z" level=info msg="library: indexed 9 files in 34.839045697s"
+
+photo_title|taken_at|photo_lat|photo_lng|photo_country
+Seashore / South Africa / 2017|2017-02-15 12:13:40+00:00|-29.2824777777778|31.4436361111111|za
+Mountain Lake / 2023|2023-10-02 15:40:00+00:00|0.0|0.0|zz
+Still Life / 2023|2023-10-03 11:25:00+00:00|0.0|0.0|zz
+Harbour Sunrise / 2024|2024-06-14 06:12:00+00:00|0.0|0.0|zz
+Church / Reykjavíkurborg / 2024|2024-06-14 06:12:00+00:00|64.1466|-21.9426|is
+City Squares / 2024|2024-06-14 09:05:00+00:00|0.0|0.0|zz
+Red Circle Study / 2025|2025-01-20 12:00:00+00:00|0.0|0.0|zz
+Chart Lines|2026-10-29 18:37:08+00:00|0.0|0.0|zz

@@ -1,0 +1,40 @@
+$ one YAML sidecar, written by PhotoPrism into its own storage/sidecar/
+TakenAt: 2024-06-14T06:12:00Z
+TakenAtLocal: 2024-06-14T06:12:00Z
+TakenSrc: meta
+UID: ptnomxa0dssmxbry
+Type: image
+Title: Harbour Sunrise / 2024
+Caption: Drawn sunrise over a harbour, lab fixture
+CaptionSrc: meta
+TimeZone: Local
+Year: 2024
+Month: 6
+Day: 14
+Quality: 2
+Details:
+  Keywords: harbour, sunrise, teal
+  Software: PhotoPrism lab fixture maker 1.0
+  SoftwareSrc: meta
+CreatedAt: 2026-10-29T18:48:46Z
+UpdatedAt: 2026-10-29T18:48:47Z
+
+$ the index (storage/index.db), photos table
+Error: in prepare, no such column: p.place_label
+  LECT p.photo_title AS title, p.taken_at AS taken, p.place_label AS place, p.ph
+                                      error here ---^
+
+$ labels the classifier attached
+photo|label|uncertainty
+Chart Lines|Website|49.0
+City Squares / 2024|Scoreboard|56.0
+Harbour Sunrise / 2024|Church|47.0
+Harbour Sunrise / 2024|Website|57.0
+Mountain Lake / 2023|Office|30.0
+
+$ counts
+photos: 6
+files: 6
+markers: 0
+faces: 0
+subjects(people): 0

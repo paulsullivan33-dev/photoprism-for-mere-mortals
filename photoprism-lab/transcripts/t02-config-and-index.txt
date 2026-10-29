@@ -1,0 +1,82 @@
+$ photoprism config (rows the guide depends on, extracted from the full table)
+
+$ originals before indexing: listing + sha256
+total 212
+drwxrwx--- 1 root root   202 Oct 29 18:37 .
+drwxrwx--- 1 root root   128 Oct 29 18:47 ..
+-rw-rw---- 1 root root  5267 Oct 29 18:37 chart-lines.png
+-rw-rw---- 1 root root 50472 Oct 29 18:37 city-squares.jpg
+-rw-rw---- 1 root root 50873 Oct 29 18:37 harbour-sunrise.jpg
+-rw-rw---- 1 root root 31858 Oct 29 18:37 mountain-lake.jpg
+-rw-rw---- 1 root root 34150 Oct 29 18:37 red-circle-study.jpg
+-rw-rw---- 1 root root 28999 Oct 29 18:37 still-life.jpg
+c8656ad569a7afecee662e71ab0dcba84c38755034aa3c0390dcf40b192fd296  chart-lines.png
+01ba836b78635a096efd8586d60554d3e49183534360a92995288a9c6d9b367e  city-squares.jpg
+06a0592253a5d8585b7966bc8eecc9aada309aa1dc40a86ceaea00305fa51180  harbour-sunrise.jpg
+a88f821f9a9a3df23010ee2336edbfbb714266477f327311948f6a83ceda7d95  mountain-lake.jpg
+906f1e451f8369c04d87a036fccfc794d19daf3c01f61e2ee4865c368138bb03  red-circle-study.jpg
+7bc715ff56e6ad7541b6ee0f43f2c1e32213d92bb22a082acf9dbb3aab5a9b46  still-life.jpg
+
+$ photoprism index
+time="2026-10-29T18:48:22Z" level=info msg="faces: loading yunet on the cpu"
+time="2026-10-29T18:48:22Z" level=info msg="faces: loading sface on the cpu"
+time="2026-10-29T18:48:22Z" level=info msg="Become a member today, support our mission and enjoy our member benefits! 💎"
+time="2026-10-29T18:48:22Z" level=info msg="Visit https://www.photoprism.app/membership/ to learn more."
+time="2026-10-29T18:48:23Z" level=info msg="migrate: 20221015-100000 successful [152.674623ms]"
+time="2026-10-29T18:48:23Z" level=info msg="migrate: 20221015-100100 successful [137.204497ms]"
+time="2026-10-29T18:48:23Z" level=info msg="migrate: 20240709-000001 successful [127.685499ms]"
+time="2026-10-29T18:48:23Z" level=info msg="migrate: 20250117-000001 successful [132.810857ms]"
+time="2026-10-29T18:48:23Z" level=info msg="migrate: 20250315-000001 successful [161.227701ms]"
+time="2026-10-29T18:48:34Z" level=info msg="migrate: 20211121-094727 successful [149.883822ms]"
+time="2026-10-29T18:48:34Z" level=info msg="migrate: 20211124-120008 successful [125.294347ms]"
+time="2026-10-29T18:48:34Z" level=info msg="migrate: 20220329-040000 successful [134.19757ms]"
+time="2026-10-29T18:48:35Z" level=info msg="migrate: 20220329-050000 successful [197.006011ms]"
+time="2026-10-29T18:48:35Z" level=info msg="migrate: 20220329-061000 successful [214.422953ms]"
+time="2026-10-29T18:48:35Z" level=info msg="migrate: 20220329-071000 successful [172.176196ms]"
+time="2026-10-29T18:48:35Z" level=info msg="migrate: 20220329-081000 successful [206.643608ms]"
+time="2026-10-29T18:48:35Z" level=info msg="migrate: 20220329-083000 successful [133.285911ms]"
+time="2026-10-29T18:48:36Z" level=info msg="migrate: 20220329-091000 successful [183.938043ms]"
+time="2026-10-29T18:48:36Z" level=info msg="migrate: 20220329-093000 successful [132.51968ms]"
+time="2026-10-29T18:48:36Z" level=info msg="migrate: 20220421-200000 successful [169.650812ms]"
+time="2026-10-29T18:48:36Z" level=info msg="migrate: 20230309-000001 successful [119.637711ms]"
+time="2026-10-29T18:48:36Z" level=info msg="migrate: 20230313-000001 successful [160.916393ms]"
+time="2026-10-29T18:48:36Z" level=info msg="migrate: 20240112-000001 successful [172.444939ms]"
+time="2026-10-29T18:48:36Z" level=info msg="migrate: 20241010-000001 successful [131.691987ms]"
+time="2026-10-29T18:48:37Z" level=info msg="migrate: 20241202-000001 successful [119.41738ms]"
+time="2026-10-29T18:48:37Z" level=info msg="migrate: 20250416-000001 successful [123.838752ms]"
+time="2026-10-29T18:48:37Z" level=info msg="migrate: 20251005-000001 successful [134.722008ms]"
+time="2026-10-29T18:48:37Z" level=info msg="migrate: 20251007-000001 successful [132.855965ms]"
+time="2026-10-29T18:48:37Z" level=info msg="migrate: 20260828-000001 successful [128.024148ms]"
+time="2026-10-29T18:48:39Z" level=info msg="indexing originals in /home/hatch/workspace/photoprism-lab-work/originals"
+time="2026-10-29T18:48:39Z" level=info msg="metadata: EOF in city-squares.jpg, starting brute-force search (parse jpeg)"
+time="2026-10-29T18:48:39Z" level=info msg="media: generated 7 thumbnails for city-squares.jpg [207.968237ms]"
+time="2026-10-29T18:48:39Z" level=info msg="media: generated 7 thumbnails for chart-lines.png [288.809214ms]"
+time="2026-10-29T18:48:39Z" level=info msg="media: chart-lines.png was taken at 2026-10-29 18:37:08 +0000 UTC (file mod time)"
+time="2026-10-29T18:48:40Z" level=info msg="classify: loading embedded ImageNet labels"
+time="2026-10-29T18:48:40Z" level=info msg="classify: loading efficientformerv2_s2 on the cpu with ONNX Runtime from libonnxruntime.so"
+time="2026-10-29T18:48:40Z" level=info msg="vision: generated 1 label for city-squares.jpg [1.308873654s]"
+time="2026-10-29T18:48:41Z" level=info msg="vision: generated 1 label for chart-lines.png [1.369280547s]"
+time="2026-10-29T18:48:42Z" level=info msg="index: added main png file chart-lines.png"
+time="2026-10-29T18:48:42Z" level=info msg="metadata: EOF in harbour-sunrise.jpg, starting brute-force search (parse jpeg)"
+time="2026-10-29T18:48:44Z" level=info msg="index: added main jpg file city-squares.jpg"
+time="2026-10-29T18:48:44Z" level=info msg="metadata: EOF in mountain-lake.jpg, starting brute-force search (parse jpeg)"
+time="2026-10-29T18:48:45Z" level=info msg="media: generated 7 thumbnails for mountain-lake.jpg [537.833889ms]"
+time="2026-10-29T18:48:45Z" level=info msg="media: generated 7 thumbnails for harbour-sunrise.jpg [629.509731ms]"
+time="2026-10-29T18:48:45Z" level=info msg="vision: generated 1 label for mountain-lake.jpg [311.225494ms]"
+time="2026-10-29T18:48:45Z" level=info msg="vision: generated 2 labels for harbour-sunrise.jpg [452.973886ms]"
+time="2026-10-29T18:48:46Z" level=info msg="index: added main jpg file mountain-lake.jpg"
+time="2026-10-29T18:48:46Z" level=info msg="metadata: EOF in red-circle-study.jpg, starting brute-force search (parse jpeg)"
+time="2026-10-29T18:48:46Z" level=info msg="media: generated 7 thumbnails for red-circle-study.jpg [93.533691ms]"
+time="2026-10-29T18:48:49Z" level=info msg="index: added main jpg file harbour-sunrise.jpg"
+time="2026-10-29T18:48:49Z" level=info msg="metadata: EOF in still-life.jpg, starting brute-force search (parse jpeg)"
+time="2026-10-29T18:48:49Z" level=info msg="media: generated 7 thumbnails for still-life.jpg [167.852241ms]"
+time="2026-10-29T18:48:50Z" level=info msg="index: added main jpg file still-life.jpg"
+time="2026-10-29T18:48:51Z" level=info msg="index: added main jpg file red-circle-study.jpg"
+time="2026-10-29T18:48:51Z" level=info msg="faces: 0 of the 10 new markers required for clustering clear the 112 px size and 85 score thresholds"
+time="2026-10-29T18:48:52Z" level=info msg="index: updated 6 files [12.786877083s]"
+time="2026-10-29T18:48:52Z" level=info msg="library: indexed 7 files in 1m1.247673528s"
+
+real	1m8.451s
+user	0m9.099s
+sys	0m1.313s
+index exit: 0

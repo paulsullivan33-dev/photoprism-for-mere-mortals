@@ -1,0 +1,64 @@
+time="2026-10-29T19:34:29Z" level=info msg="faces: loading yunet on the cpu"
+time="2026-10-29T19:34:30Z" level=info msg="faces: loading sface on the cpu"
+time="2026-10-29T19:34:31Z" level=info msg="media: generated 7 thumbnails for drawn-portrait.jpg [209.642642ms]"
+time="2026-10-29T19:34:31Z" level=info msg="media: drawn-portrait.jpg was taken at 2026-10-29 19:33:49 +0000 UTC (file mod time)"
+time="2026-10-29T19:34:33Z" level=info msg="index: added main jpg file drawn-portrait.jpg"
+time="2026-10-29T19:34:33Z" level=info msg="faces: 0 of the 10 new markers required for clustering clear the 112 px size and 85 score thresholds"
+time="2026-10-29T19:34:34Z" level=info msg="index: updated 1 file [3.306261926s]"
+time="2026-10-29T19:34:34Z" level=info msg="library: indexed 10 files in 36.241611541s"
+
+$ markers and faces after the drawn portrait
+markers: 0
+faces: 0
+
+$ photoprism faces audit
+
+$ photoprism faces (subcommands)
+NAME:
+   photoprism faces - Face recognition subcommands
+
+USAGE:
+   photoprism faces [command options]
+
+COMMANDS:
+   status, config  Reports the current status and configuration details
+   update          Performs face clustering and matching
+   index           Searches originals for faces
+   optimize        Optimizes face clusters
+   migrate         Migrates face embeddings to a supported model
+   ls, clusters    Lists face clusters with their samples and current markers
+   markers         Lists face markers and what they are assigned to
+   subjects        Lists people with the files and photos their markers support
+   conflicts       Lists face clusters that hold the same face but not the same person
+   audit           Scans the index for issues
+   stats           Shows stats on face samples
+   reset           Removes people and faces after confirmation
+   help, h         Shows a list of commands or help for one command
+$ photoprism faces status
+
+Face detection and recognition are enabled.
+
+GLOBAL OPTIONS
+
+┌───────────┬───────┐
+│   Name    │ Value │
+├───────────┼───────┤
+│ xmp-faces │ false │
+│ face-run  │ auto  │
+└───────────┴───────┘
+
+FACE DETECTION
+
+┌───────────────────────┬─────────────────────────────────────────────────────────────────────────────────────────────────────┐
+│         Name          │                                                Value                                                │
+├───────────────────────┼─────────────────────────────────────────────────────────────────────────────────────────────────────┤
+│ face-detector         │ yunet                                                                                               │
+│ face-detector-path    │ /home/hatch/workspace/photoprism-lab-work/pkg/assets/models/yunet/face_detection_yunet_2026may.onnx │
+│ face-detector-threads │ 1                                                                                                   │
+│ face-size             │ 25                                                                                                  │
+│ face-size-retry       │ 10                                                                                                  │
+│ face-score            │ 65                                                                                                  │
+│ face-migrate-size     │ 10                                                                                                  │
+│ face-migrate-score    │ 50                                                                                                  │
+
+$ photoprism faces stats

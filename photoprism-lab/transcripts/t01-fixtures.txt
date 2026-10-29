@@ -1,0 +1,25 @@
+$ python3 make_photos.py
+wrote harbour-sunrise.jpg
+wrote mountain-lake.jpg
+wrote city-squares.jpg
+wrote red-circle-study.jpg
+wrote still-life.jpg
+wrote chart-lines.png
+done
+
+$ read EXIF back with piexif
+city-squares.jpg | Make: b'LabCamera' | Model: b'LabCamera LC-1' | Taken: b'2024:06:14 09:05:00' | GPS: 64.15 21.93 | Desc: b'Drawn grid of coloured squares, lab fixture'
+harbour-sunrise.jpg | Make: b'LabCamera' | Model: b'LabCamera LC-1' | Taken: b'2024:06:14 06:12:00' | GPS: 64.1466 21.9426 | Desc: b'Drawn sunrise over a harbour, lab fixture'
+mountain-lake.jpg | Make: b'LabCamera' | Model: b'LabCamera LC-1' | Taken: b'2023:10:02 15:40:00' | GPS: 35.0116 135.7681 | Desc: b'Drawn mountain lake, lab fixture'
+red-circle-study.jpg | Make: b'LabCamera' | Model: b'LabCamera LC-1' | Taken: b'2025:01:20 12:00:00' | GPS: None None | Desc: b'Drawn red circle study, lab fixture'
+still-life.jpg | Make: b'LabCamera' | Model: b'LabCamera LC-1' | Taken: b'2023:10:03 11:25:00' | GPS: 35.02 135.76 | Desc: b'Drawn still life with fruit, lab fixture'
+
+total 212
+drwxrwx--- 1 root root   202 Oct 29 18:37 .
+drwxrwx--- 1 root root    58 Oct 29 18:37 ..
+-rw-rw---- 1 root root  5267 Oct 29 18:37 chart-lines.png
+-rw-rw---- 1 root root 50472 Oct 29 18:37 city-squares.jpg
+-rw-rw---- 1 root root 50873 Oct 29 18:37 harbour-sunrise.jpg
+-rw-rw---- 1 root root 31858 Oct 29 18:37 mountain-lake.jpg
+-rw-rw---- 1 root root 34150 Oct 29 18:37 red-circle-study.jpg
+-rw-rw---- 1 root root 28999 Oct 29 18:37 still-life.jpg
